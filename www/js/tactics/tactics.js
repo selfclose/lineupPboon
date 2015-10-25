@@ -1,5 +1,6 @@
 //---- Translate ----//
 var trans_EnterToEdit = 'กด Enter เพื่อตั้งชื่อ';
+var trans_untited = 'lineup ไม่ได้ตั้ง...';
 
 /* --- APPLICATION --- */
 $(document).ready(function () {
@@ -184,6 +185,7 @@ function setMatch(match, players) {
     exportUrlUpdate();
 }
 
+//จำนวนผู้เล่น
 function setMatchPlayers(match, players) {
     $('SELECT.matchPlayers OPTION[value="' + players + '"]').attr('selected', true);
     var tokens = $(match).find('.token');
@@ -197,6 +199,7 @@ function setMatchPlayers(match, players) {
     // Set alignment to custom for less than 11 players in the field.
     var select = $(match).find('SELECT.teamAlignment');
     var optionsToDisable = $(select).find('OPTION').filter(':not(.custom)');
+    //ถ้าผู้เล่นไม่ใช่ 11 คน ไม่ให้เลือกแผน
     if (players != 11) {
         $(optionsToDisable).each(function () {
             $(this).attr('disabled', 'disabled');
@@ -691,6 +694,8 @@ function setTokenName(token, name) {
     }
 }
 
+//---------------- อ่านตำแหน่ง -------------------//
+var max_width = 252;
 function getTokenPos(token) {
     if (typeof(offsetX) == 'undefined') {
         offsetX = 0
@@ -769,6 +774,7 @@ function setTokenLabel(token) {
         var x = parseInt($(token).css('left').replace('px', ''));
         var y = parseInt($(token).css('top').replace('px', ''));
 
+        //ตรวจตำแหน่งเมื่อโดนลากออกนอกเขต
         // Out of field boundaries:
         if (x <= 37) {
             $(token).css({'left': '37px'});
@@ -841,6 +847,7 @@ $(function () {
 
 })
 
+//-------------------- export -------------------------//
 function exportUrlUpdate() {
     var exportUrl = $('INPUT.exportUrl');
     var exportEmbed = $('INPUT.exportEmbed');
@@ -850,7 +857,7 @@ function exportUrlUpdate() {
     var p = $('.matchPlayers').val();
     var a = $('.teamAlignment').val();
     var t = $('INPUT[name="team_name"]').val();
-    t = (t == 'Untitled lineup...') ? '' : t;
+    t = (t == trans_untited) ? '' : t;
     t = escape(t);
     var c = $('#colorSelector DIV').css('backgroundColor');
     c = rgb2hex(c);
@@ -1161,7 +1168,7 @@ function updateLineupObject() {
     var lineupId = $("#fld1").attr('data-id');
     var lineupThumb = 'http://lineupbuilder.com/rsrc/preview-default.png';
     var lineupTitle = $("INPUT#teamName").val();
-    if (lineupTitle == '' || lineupTitle == 'Untitled lineup...') {
+    if (lineupTitle == '' || lineupTitle == trans_untited) {
         lineupTitle = 'Untitled lineup';
     }
     var lineupDescription = getPreviewNames();
@@ -1302,7 +1309,7 @@ function updatePreviewImage() {
     var canvas = document.getElementById('previewImage220');
 
     var img = new Image();
-    img.src = '../images/bg-soccer176x220.png';
+    img.src = '../../images/bg-soccer176x220.png';
 
     img.onload = function () {
         if (canvas && canvas.getContext) {
@@ -1310,7 +1317,7 @@ function updatePreviewImage() {
             var canvasHeight = canvas.height;
             var width = 176;
             var height = 220;
-            var fieldOffset = (canvasWidth - width) / 2
+            var fieldOffset = (canvasWidth - width) / 2;
 
             var ctx = canvas.getContext('2d');
 

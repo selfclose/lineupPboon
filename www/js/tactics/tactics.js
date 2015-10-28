@@ -2,9 +2,48 @@
 var trans_EnterToEdit = 'กด Enter เพื่อตั้งชื่อ';
 var trans_untited = 'lineup ไม่ได้ตั้ง...';
 
+var default_width = 313;
+var default_height = 408;
+var new_width = "";
+var new_height = "";
+
+//ขนาดภาพต้นฉบับ
+arrayOriginalWH = [
+    {
+        width: '350',
+        height: '471'
+    }
+];
+arrayData = [];
+
+//function คำนวณ scale
+function calc_scale(original_x, original_width, new_width) {
+    return Math.floor(new_width * (original_x / original_width));
+};
+
+
+//เมื่อปรับขนาด
+window.onresize = function() {
+    applyCoordinates();
+    //if (window.innerWidth <= 800) {  console.log(new_width+"|"+new_height); }
+};
+
+function applyCoordinates() {
+    for (i=0;i<11;i++) {
+        setTokenOffset('#fld1tkn'+(i+1), arrayData[i].offX, arrayData[i].offY);
+    }
+}
+
+var app = angular.module("lineup",[]);
+app.controller('player', function($scope) {
+    $scope.A = 60;
+    $scope.setImage = function(num) {
+        console.log(num);
+    }
+});
+
 /* --- APPLICATION --- */
 $(document).ready(function () {
-
     //Globals
     window.pDefault = '11';
     window.aDefault = '40402';
@@ -54,7 +93,7 @@ $(document).ready(function () {
 });
 
 
-/* --- EDITABLE --- */
+/* --- เมาส์ชี้หัวอักษร --- */
 $(document).ready(function () {
 
     $('.arrowhead').hover(
@@ -165,13 +204,6 @@ $(function () {
     });
 });
 
-function initMatch(match) {
-    var vars = $('#fld1vars').val();
-    vars = vars !== '' ? '?' + vars : '';
-    var players = urv("p", pDefault, vars);
-    setMatch(match, players);
-}
-
 $(function () {
     $('SELECT.matchPlayers').change(function () {
         var match = $(this).closest('.team');
@@ -179,6 +211,24 @@ $(function () {
         setMatch(match, players);
     });
 });
+
+$(function () {
+    startup();
+});
+
+//ฟังชั่น Set team ปุ่มก็มาเรียก
+function startup() {
+    $('.team').each(function () {
+        initTeam(this);
+    });
+}
+
+function initMatch(match) {
+    var vars = $('#fld1vars').val();
+    vars = vars !== '' ? '?' + vars : '';
+    var players = urv("p", pDefault, vars);
+    setMatch(match, players);
+}
 
 function setMatch(match, players) {
     setMatchPlayers(match, players);
@@ -228,14 +278,10 @@ function setMatchPlayers(match, players) {
  + setTeamPlayers(team, players)
  */
 
-$(function () {
-    $('.team').each(function () {
-        initTeam(this);
-    });
-});
-
 function initTeam(team) {
     var vars = $('#fld1vars').val();
+    //vars = "p=11&a=1&t=OK%25u0E44%25u0E21%25u0E48%25u0E21%25u0E35%25u0E2D%25u0E30%25u0E44%25u0E23&c=b84444&1=GK___388_174&2=DL___284_68_170-347_193-89&3=DC___311_121&4=DR___367_251&5=DR___307_308&6=MLA___204_64&7=MCL___222_138&8=MCR_%2528c%2529%2520SHIT%2520%255B0%255D__222_211&9=MRA___204_284&10=FCL_my%2520test__98_138&11=FCR___98_211_88-130&c2=000000&c3=ffffff";
+    console.log(vars);
     vars = vars !== '' ? '?' + vars : '';
     var playerNum = urv("p", pDefault, vars);
     var name = urv("t", tDefault, vars);
@@ -311,12 +357,13 @@ function initColorPicker(c, c2, c3) {
 //	}
 }
 
-
 function setTeam(playerNum, team, name, color, color2, color3, align, players) {
     setTeamName(team, name);
     setTeamColor(team, color, color2, color3);
     setTeamAlign(team, align);
-    setTeamPlayers(team, playerNum, players);
+    setTeamPlayers(playerNum, players); //team,
+
+
 }
 
 
@@ -402,7 +449,9 @@ function setTeamAlign(team, align) {
     });
 }
 
-function setTeamPlayers(team, playerNum, players) {
+//LOOP SET
+function setTeamPlayers(playerNum, players) {
+    //LOOP START HERE
     $(players).each(function (index) {
         if (index < playerNum) {
             var chunks = this.split("_");
@@ -417,6 +466,7 @@ function setTeamPlayers(team, playerNum, players) {
             var arrow2 = chunks[6];
             var arrow3 = chunks[7];
             initToken(id, pos, num, name, offsetX, offsetY, arrow1, arrow2, arrow3);
+
         } else {
             var id = index + 1;
             var pos = '';
@@ -458,15 +508,18 @@ function setTeamPlayers(team, playerNum, players) {
  + setTokenName(token, name)
  + setTokenOffset(token, offsetX, offsetY)
  */
-
+var newToken;
 function initToken(id, pos, num, name, offsetX, offsetY, arrow1, arrow2, arrow3) {
-    var token = $('fld1tkn' + id);
-
+    var newToken = $('fld1tkn' + id);
     initTokenSelect();
     initTokenUnselect();
 
     initTokenMove();
 
+    //คัดลอกทุกอย่างลง VAR
+    arrayData.width = 350;
+    arrayData.push({offX: offsetX, offY: offsetY, origin_offX: offsetX, origin_offY: offsetY});
+    //โยน
     setToken(id, pos, num, name, offsetX, offsetY, arrow1, arrow2, arrow3);
     exportUrlUpdate();
 }
@@ -482,7 +535,11 @@ function tokenSelect(token) {
     var isEditable = $(token).closest('.editable');
     if (isEditable.length > 0) {
         $('.token.selected').removeClass('selected');
+
         $(token).addClass('selected');
+        $(token).find('.tknPos').css('background-image', 'url(../images/man/01.jpg)');
+        //$(token).css('background-image', 'url(../images/man/01.jpg)');
+        console.log('sel'+isEditable.length+'');
     }
     /*
      if(!$(token).hasClass('posGK')) {
@@ -508,6 +565,7 @@ function initTokenUnselect() {
 
 function tokenUnselect(token) {
     $(token).removeClass('selected');
+    //$(token).find('.tknPos').css('background-image','');
     var text = $(token).find('.text');
     var textVal = $(text).find('INPUT').val();
     var plyrName = $(token).find('.tknName').attr('data-name');
@@ -531,6 +589,7 @@ function tokenUnselect(token) {
      */
 }
 
+//แบ่งการใช้คำ
 function tokenSplitNames(token, name) {
     $(token).find('.tknName').attr('data-name', name);
     var text = $(token).find('.tknName');
@@ -566,6 +625,7 @@ function tokenSplitNames(token, name) {
     $(text).html('<span class="text">' + names + '</span>');
 }
 
+//เมื่อกด Enter
 $(function () {
     $(window).keypress(function (e) {
         if (e.keyCode == 13) {
@@ -602,6 +662,7 @@ $(function () {
                  }
                  */
                 if (textVal == trans_EnterToEdit) {
+                    console.log("on typing!");
                     $(text).html('<input type="text" value="" />');
                 } else {
                     $(text).html('<input type="text" value="' + textVal + '" />');
@@ -662,6 +723,9 @@ function setTokenPos(token, pos) {
         }
         if ($(token).find('.num').length <= 0) {
             $(token).find('.tknPos').text(tokenPos);
+            //เซ็ทเล่น
+            //$(token).find('.tknPos').css('background-image', 'url(../images/bg-soccer350x500.png)');
+            //$(token).find('.tknPos').css("background", ": url("../images/bg-soccer350x500.png'') no-repeat top center;')";
         }
         //$(token).attr('style','');
     }
@@ -689,13 +753,13 @@ function setTokenName(token, name) {
             $(token).removeClass('empty');
             tokenSplitNames(token, name);
         } else {
+            $(token).addClass('empty'); //ใส่เพิ่ม แก้บัคแสดงคำว่า กด enter
             tokenSplitNames(token, trans_EnterToEdit);
         }
     }
 }
-
 //---------------- อ่านตำแหน่ง -------------------//
-var max_width = 252;
+
 function getTokenPos(token) {
     if (typeof(offsetX) == 'undefined') {
         offsetX = 0
@@ -705,7 +769,6 @@ function getTokenPos(token) {
     }
 
     if (token.length > 0) {
-
         var x = parseInt($(token).css('left').replace('px', ''));
         var y = parseInt($(token).css('top').replace('px', ''));
 
@@ -774,17 +837,18 @@ function setTokenLabel(token) {
         var x = parseInt($(token).css('left').replace('px', ''));
         var y = parseInt($(token).css('top').replace('px', ''));
 
+
         //ตรวจตำแหน่งเมื่อโดนลากออกนอกเขต
         // Out of field boundaries:
         if (x <= 37) {
             $(token).css({'left': '37px'});
-        } else if (x >= 313) {
-            $(token).css({'left': '313px'});
+        } else if (x >= new_width) {
+            $(token).css({'left': new_width + 'px'});
         }
         if (y <= 40) {
             $(token).css({'top': '40px'});
-        } else if (y >= 408) {
-            $(token).css({'top': '408px'});
+        } else if (y >= new_height) {
+            $(token).css({'top': new_width + 'px'});
         }
 
         $(token).find('.tknPos').text(getTokenPos($(token)));
@@ -793,15 +857,23 @@ function setTokenLabel(token) {
     }
 }
 
+//ตั้ง XY
 function setTokenOffset(token, offsetX, offsetY) {
     if (typeof(offsetX) == 'undefined' && typeof(offsetY) == 'undefined') {
         return false
     }
-
+    //console.log(token);
+    var newY = calc_scale(offsetY, arrayOriginalWH[0].width, $('.teamBody').css('width').replace('px',''));
+    var newX = calc_scale(offsetX, arrayOriginalWH[0].height, $('#bgfield').css('height').replace('px',''));
     $(token).css({
-        'top': offsetX + 'px',
-        'left': offsetY + 'px'
+        'top': newX + 'px',
+        'left': newY + 'px'
     });
+
+    //------ keep new XY ------//
+    //arrayData[token.replace('#fld1tkn','')].offX = offsetX;
+    //arrayData[token.replace('#fld1tkn','')].offY = offsetY;
+//    console.log('ppp'+JSON.stringify(token[selector]));
 }
 
 
@@ -815,6 +887,7 @@ function setTokenArrows(token, arrow1, arrow2, arrow3) {
     if (typeof(arrow3) == 'undefined') {
         arrow3 = ''
     }
+    //ตั้งค่า ศร
     var arrows = new Array(arrow1, arrow2, arrow3);
     $(arrows).each(function (index) {
         if (this != '') {
@@ -845,7 +918,7 @@ $(function () {
      $(this).select();
      }); */
 
-})
+});
 
 //-------------------- export -------------------------//
 function exportUrlUpdate() {
@@ -873,7 +946,7 @@ function exportUrlUpdate() {
         playerVars[0] = $(this).attr('class').match(/pos\w+/g).toString().trim().replace('pos', '');
         playerVars[1] = $(this).find('.tknName').attr('data-name');
         playerVars[1] = escape(playerVars[1]);
-        playerVars[1] = (playerVars[1] == 'Enter%20to%20edit') ? '' : playerVars[1];
+        playerVars[1] = (playerVars[1] == escape(trans_EnterToEdit)) ? '' : playerVars[1];
         playerVars[2] = $(this).find('.num').text().trim();
         playerVars[3] = $(this).css('top').replace('px', '');
         playerVars[4] = $(this).css('left').replace('px', '');
@@ -1038,7 +1111,7 @@ $(function () {
         savePreviewImg();
     });
 
-})
+});
 
 //ย่อลิ้งค์ให้สั้นลง
 function ui1ShortenUrl(what) {
@@ -1178,6 +1251,7 @@ function updateLineupObject() {
     updateOGMetas(lineupId, lineupThumb, lineupTitle, lineupDescription);
 }
 
+//SEO
 function updateOGMetas(id, image, title, description) {
     if ($('#fld1vars').val() !== '') {
         $('meta[property="og\\:title"]').attr('content', title);

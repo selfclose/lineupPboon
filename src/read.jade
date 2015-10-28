@@ -3,493 +3,368 @@
 
 doctype html
 html
-   head
-      meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
-      title Lineup Builder: Football Formations and Tactics
-      // Common
-      meta(charset='utf-8')
-      meta(name='viewport', content='width=device-width, initial-scale=1')
-      meta(name='description', content='The quickest way to create football lineups to share on the web.')
-      meta(name='keywords', content='football, tactics, positions, alignment, lineup, management, team, football tactics, football formations, soccer tactics, soccer formations, football positions, soccer positions, manager')
-      //if lt IE 9
-        script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
-      // Icons
-      link(rel='shortcut icon', href='http://lineupbuilder.com/rsrc/lineupbuilder.ico')
-      link(rel='image_src', href='http://lineupbuilder.com/thumbs/football/388174317643271383272113172842046422213822221120428498138136262dc0000ffffff.png')
-      // Lineup
-      link(rel='canonical', href='./Lineup Builder_ Football Formations and Tactics_ANS_files/Lineup Builder_ Football Formations and Tactics_ANS.html')
-      // Lineup
-      link(type='text/css', rel='stylesheet', href='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery-ui-1.8.5.custom.css', media='all')
-      link(type='text/css', rel='stylesheet', href='js/colorpicker/colorpicker.css', media='screen')
-      // Common
-      link(rel='stylesheet', href='css/tactics.css', type='text/css')
-      link(rel='stylesheet', href='css/tactics-wc.css', type='text/css')
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        title Lineup Builder: Football Formations and Tactics
+        // Common
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='description', content='The quickest way to create football lineups to share on the web.')
+        meta(name='keywords', content='football, tactics, positions, alignment, lineup, management, team, football tactics, football formations, soccer tactics, soccer formations, football positions, soccer positions, manager')
+        //if lt IE 9
+          script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+        // Icons
+        link(rel='shortcut icon', href='http://lineupbuilder.com/rsrc/lineupbuilder.ico')
+        // Lineup
+        // Lineup
+        link(type='text/css', rel='stylesheet', href='js/jquery-ui/jquery-ui-1.8.5.custom.css', media='all')
+        link(type='text/css', rel='stylesheet', href='js/colorpicker/colorpicker.css', media='screen')
+        // Common
+        link(rel='stylesheet', href='css/tactics.css', type='text/css')
+        link(rel='stylesheet', href='css/tactics-wc.css', type='text/css')
 
-      script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery.min.js')
-      script.
-          window.jQuery || document.write('<script src="../rsrc/js/jquery-1.11.0.min.js"><\\/script>')
-      // IE Support
-      script.
-          if ((/Trident\\/7\./).test(navigator.userAgent) ) {
-              window.location = "nosupport.php"
-          }
-      // Tactics-UI
-      script(src='js/tactics.js')
-      // JQuery-UI
-      script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery-ui-1.10.4.custom.min.js')
-      script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery.ui.touch-punch.min.js')
-      // JQuery-Plugins
-      script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery.form-validation-and-hints.js')
-      script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/colorpicker.js')
-      script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery-css-transform.js')
-      script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery.animate-css-rotate-scale.js')
-      script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery.nicescroll.min.js')
-      // Team Colors
-      style.
-         #main .teamHeadMenu {
-            background:#555;
-            color:#FFF;
-         }
-         #main .teamHeadMenu A,
-         #main .teamHeadMenu STRONG {
-            color:#FFF;
-         }
-         #main .posGK .tknPos {
-            background-image:none!important;
-            background-color:#216221!important;
-            border-color:#FFF!important;
-            color:#FFF!important;
-            text-shadow: -1px 0 #111, 0 1px #111, 1px 0 #111, 0 -1px #111;
-         }
-      style(type='text/css').
-   body.wc.teamCustom(style='cursor: auto;')
-      #main
-         #mainbody
-            .mbody.clearfix
-               .layoutCenter
-                  .colContent
-                     form(method='post')
-                        .team.clearfix
-                           .teamHead
-                              h5.teamNav
-                                 strong LineupBuilder.com
-                                 |  Drag players and tokens to build your lineup
-                              .teamHeadMenu
-                                 ul.teamHeadMenuActionsLeft
-                                    li
-                                       a.jsDrawerToggle(href='http://lineupbuilder.com/2014/custom/?sk=986k#')
-                                          span.glyphicon.glyphicon-align-justify
-                                 h3.teamHeadMenuTitle
-                                    strong
-                              // /teamHeadMenu
-                              .teamData
-                                 .teamDataColorName
+        script(src='js/jquery/jquery-1.5.min.js')
+        script.
+            window.jQuery || document.write('<script src="../rsrc/js/jquery-1.11.0.min.js"><\\/script>')
+        // IE Support
+        script.
+            if ((/Trident\\/7\./).test(navigator.userAgent) ) {
+                window.location = "nosupport.php"
+            }
+        // Tactics-UI
+        script(src='js/angular/angular.js')
+        script(src='js/tactics/tactics.js')
+        // JQuery-UI
+        script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery-ui-1.10.4.custom.min.js')
+        script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery.ui.touch-punch.min.js')
+        // JQuery-Plugins
+        script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery.form-validation-and-hints.js')
+        script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/colorpicker.js')
+        script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery-css-transform.js')
+        script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery.animate-css-rotate-scale.js')
+        //script(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/jquery.nicescroll.min.js')
+        // Team Colors
+        style.
+            #main .teamHeadMenu {
+                background: #555;
+                color: #FFF;
+            }
+
+            #main .teamHeadMenu A,
+            #main .teamHeadMenu STRONG {
+                color: #FFF;
+            }
+
+            #main .posGK .tknPos {
+                background-image: none !important;
+                background-color: #216221 !important;
+                border-color: #FFF !important;
+                color: #FFF !important;
+                text-shadow: -1px 0 #111, 0 1px #111, 1px 0 #111, 0 -1px #111;
+            }
+    body.wc.teamCustom(style='cursor: auto;')
+        .layoutCenter
+            .colContent
+                form(method='post')
+                    .team.clearfix
+                        .teamHead
+                            input#fld1vars(type='text', value='p=11&a=1&t=OK%25u0E44%25u0E21%25u0E48%25u0E21%25u0E35%25u0E2D%25u0E30%25u0E44%25u0E23&c=b84444&1=GK___388_174&2=DL___284_68_170-347_193-89&3=DC___311_121&4=DR___367_251&5=DR___307_308&6=MLA___204_64&7=MCL___222_138&8=MCR_%2528c%2529%2520nothing%2520%255B0%255D__222_211&9=MRA___204_284&10=FCL_my%2520test__98_138&11=FCR___98_211_88-130&c2=000000&c3=ffffff')
+                            button(type="button", onclick="startup();") apply
+                            input#teamShort(type='text', value='custom', name='team_short')
+                            .teamData
+                                .teamDataColorName
                                     #colorSelector.colorSelector
-                                       div(style='background-color: rgb(220, 0, 0);')
+                                        div(style='background-color: rgb(220, 0, 0);')
                                     #colorSelectorBorder.colorSelector
-                                       div(style='background-color: rgb(255, 255, 255);')
+                                        div(style='background-color: rgb(255, 255, 255);')
                                     #colorSelectorNum.colorSelector
-                                       div(style='background-color: rgb(255, 255, 255);')
+                                        div(style='background-color: rgb(255, 255, 255);')
                                     input#teamName.teamName.hint(type='text', name='team_name', title='*Untitled lineup...', value='')
-                                    input#teamNameHidden(type='hidden', value='')
-                              // /teamData
-                           // /teamHead
-                           .cards
-                              .card.cardDrawer(tabindex='5000', style='overflow: hidden; outline: none; margin-left: -200px;')
-                                 ul
+                                    input#teamNameHidden(type='text', value='')
+                            // /teamData
+                        // /teamHead
+                            //.card.cardDrawer(tabindex='5000', style='overflow: hidden; outline: none; margin-left: -200px;')
+                                ul
                                     li
-                                       h4 Custom
-                                       ul
-                                          li
-                                             a(href='http://lineupbuilder.com/new.php') New Lineup
+                                        h4 Custom
+                                        ul
+                                            li
+                                                a(href='http://lineupbuilder.com/new.php') New Lineup
                                     li
-                                       h4 World Cup Teams
-                                       ul
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/dz') Algeria
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/ar') Argentina
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/au') Australia
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/be') Belgium
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/ba') Bosnia and Herzegovina
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/br') Brazil
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/cm') Cameroon
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/cl') Chile
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/co') Colombia
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/cr') Costa Rica
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/ci') C?te d' Ivoire
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/hr') Croatia
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/ec') Ecuador
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/en') England
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/fr') France
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/de') Germany
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/gh') Ghana
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/gr') Greece
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/hn') Honduras
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/ir') Iran
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/it') Italy
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/jp') Japan
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/mx') Mexico
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/nl') Netherlands
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/ng') Nigeria
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/pt') Portugal
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/ru') Russia
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/kr') South Korea
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/es') Spain
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/ch') Switzerland
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/us') United States
-                                          li
-                                             a(href='http://lineupbuilder.com/2014/uy') Uruguay
-                              // /cardDrawer
-                              .card.cardField
-                                 .teamBody
-                                    input#fld1vars(type='text', value='p=11&a=1&t=&c=dc0000&1=GK___388_174&2=DL___317_64&3=DCL___327_138&4=DCR___327_211&5=DR___317_284&6=MLA___204_64&7=MCL___222_138&8=MCR___222_211&9=MRA___204_284&10=FCL___98_138&11=AR___136_262&c2=ffffff&c3=ffffff')
-                                    input#teamShort(type='hidden', value='custom', name='team_short')
-                                    .noticeLoading(style='display: none;')
-                                       img(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/ajax-loader-field.gif', alt='', width='32', height='32')
-                                       p Loading
-                                    // /noticeLoading
-                                    .fieldControls.top
-                                       select.matchPlayers(name='match_players')
-                                          option(value='11', selected='selected') 11 players
-                                          option(value='10') 10 players
-                                          option(value='9') 9 players
-                                          option(value='8') 8 players
-                                          option(value='7') 7 players
-                                          option(value='6') 6 players
-                                          option(value='5') 5 players
-                                       select.teamAlignment(name='team_alignment')
-                                          optgroup(label='Most common')
-                                             option(value='40402', pos='GK,DL,DCL,DCR,DR,MLA,MCL,MCR,MRA,FCL,FCR') 4-4-2
-                                             option(value='40231', pos='GK,DL,DCL,DCR,DR,DML,DMR,AL,AC,AR,FCA') 4-2-3-1
-                                             option(value='40303', pos='GK,DLL,DCL,DCR,DRR,DMC,MCRR,MCAL,WL,WR,FCA') 4-3-3
-                                          optgroup(label='Modern')
-                                             option(value='40213', pos='GK,DL,DCL,DCR,DR,DML,DMR,MCA,WL,WR,FCA') 4-2-1-3
-                                             option(value='40222', pos='GK,DL,DCL,DCR,DR,DML,DMR,AL,AR,FCLA,FCRA', selected='selected') 4-2-2-2
-                                             option(value='40321', pos='GK,DL,DCL,DCR,DR,ML,DMC,MR,ACL,ACR,FCA') 4-3-2-1
-                                             option(value='40411', pos='GK,DL,DCL,DCR,DR,MLAA,MCL,MCR,MRAA,AC,FCA') 4-4-1-1
-                                             option(value='40501', pos='GK,DL,DCL,DCR,DR,DMC,MLAA,MCLL,MCRR,MRAA,FC') 4-5-1
-                                             option(value='41212', pos='GK,DLL,DCL,DCR,DRR,MCLL,DMC,MCRR,AC,FCLA,FCRA') 4-3-1-2
-                                             option(value='40204', pos='GK,DL,DCL,DCR,DR,MCL,MCR,WL,FCL,FCR,WR') 4-2-4
-                                             option(value='50302', pos='GK,DLL,DCLL,DC,DCRR,DRR,MCLL,DMC,MCRR,FCL,FCR') 5-3-2
-                                             option(value='50401', pos='GK,DLL,DCLL,DC,DCRR,DRR,MLAA,MCL,MCR,MRAA,FC') 5-4-1
-                                             option(value='30313', pos='GK,DCLL,DC,DCRR,MCLL,DMC,MCRR,AC,WLA,FCA,WRA') 3-3-1-3
-                                             option(value='30331', pos='GK,DCLL,DC,DCRR,MCLL,DMC,MCRR,AL,AC,AR,FCA') 3-3-3-1
-                                             option(value='30403', pos='GK,DCLL,DC,DCRR,MLA,MCL,MCR,MRA,FCLL,FCRR,FCA') 3-4-3
-                                             option(value='30502', pos='GK,DCLL,DC,DCRR,DMC,MLAA,MCLL,MCRR,MRAA,FCL,FCR') 3-5-2
-                                          optgroup(label='Classic')
-                                             option(value='20305', pos='GK,DCL,DCR,MCLL,DMC,MCRR,WL,AC,WR,FCLA,FCRA') 2-3-1-4
-                                             option(value='30304', pos='GK,DCLL,DC,DCRR,MCLL,DMC,MCRR,WL,FCL,FCR,WR') 3-3-4
-                                          optgroup(label='Others')
-                                             option.custom(value='1', pos='GK,DLL,DCL,DCR,DRR,DML,DMR,AL,AC,AR,FCA', selected='selected') Custom
-                                    // /fieldControls
-                                    ul#fld1.field.editable(data-id='986k')
-                                       li#fld1tkn1.token.posGK(style='')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') GK
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn2.token.ui-draggable.posDL(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') DL
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn3.token.ui-draggable.posDCL(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') DC
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn4.token.ui-draggable.posDCR(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') DC
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn5.token.ui-draggable.posDR(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') DR
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn6.token.ui-draggable.posDML(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') DM
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn7.token.ui-draggable.posDMR(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') DM
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn8.token.ui-draggable.posAL(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') AL
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn9.token.ui-draggable.posAR(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') AR
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn10.token.ui-draggable.posFCLA(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') FC
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                       li#fld1tkn11.token.ui-draggable.posFCRA(style='')
-                                          .arrow.arrow1
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow2
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          .arrow.arrow3
-                                             .arrowhead.ui-draggable(style='position: relative;')
-                                          dfn
-                                             span.ifSelected
-                                                span.tknPos(style='border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(220, 0, 0);') FC
-                                          var.tknName(data-name='')
-                                             span.text.ui-sortable
-                                    // /field
-                                    .fieldSign
-                                       .fieldSignCorner
-                                       strong LineupBuilder.com
-                                    .panelShare
-                                       a.modalClose.jsPanelShareClose(href='http://lineupbuilder.com/2014/custom/?sk=986k#')
-                                          span.glyphicon.glyphicon-remove
-                                       .export
-                                          .preview
-                                             .previewImg
+                                        h4 World Cup Teams
+                                        ul
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/dz') Algeria
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/ar') Argentina
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/au') Australia
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/be') Belgium
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/ba') Bosnia and Herzegovina
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/br') Brazil
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/cm') Cameroon
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/cl') Chile
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/co') Colombia
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/cr') Costa Rica
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/ci') C?te d' Ivoire
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/hr') Croatia
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/ec') Ecuador
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/en') England
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/fr') France
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/de') Germany
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/gh') Ghana
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/gr') Greece
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/hn') Honduras
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/ir') Iran
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/it') Italy
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/jp') Japan
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/mx') Mexico
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/nl') Netherlands
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/ng') Nigeria
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/pt') Portugal
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/ru') Russia
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/kr') South Korea
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/es') Spain
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/ch') Switzerland
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/us') United States
+                                            li
+                                                a(href='http://lineupbuilder.com/2014/uy') Uruguay
+                            // /cardDrawer
+                        .card.cardField
+                            .teamBody
+
+                                .noticeLoading(style='display: none;')
+                                    img(src='./Lineup Builder_ Football Formations and Tactics_ANS_files/ajax-loader-field.gif', alt='', width='32', height='32')
+                                    p Loading
+                                // /noticeLoading
+                                .fieldControls.top
+                                    select.matchPlayers(name='match_players')
+                                        option(value='11', selected='selected') 11 players
+                                        option(value='10') 10 players
+                                        option(value='9') 9 players
+                                        option(value='8') 8 players
+                                        option(value='7') 7 players
+                                        option(value='6') 6 players
+                                        option(value='5') 5 players
+                                    select.teamAlignment(name='team_alignment')
+                                        optgroup(label='Most common')
+                                            option(value='40402', pos='GK,DL,DCL,DCR,DR,MLA,MCL,MCR,MRA,FCL,FCR') 4-4-2
+                                            option(value='40231', pos='GK,DL,DCL,DCR,DR,DML,DMR,AL,AC,AR,FCA') 4-2-3-1
+                                            option(value='40303', pos='GK,DLL,DCL,DCR,DRR,DMC,MCRR,MCAL,WL,WR,FCA') 4-3-3
+                                        optgroup(label='Modern')
+                                            option(value='40213', pos='GK,DL,DCL,DCR,DR,DML,DMR,MCA,WL,WR,FCA') 4-2-1-3
+                                            option(value='40222', pos='GK,DL,DCL,DCR,DR,DML,DMR,AL,AR,FCLA,FCRA', selected='selected') 4-2-2-2
+                                            option(value='40321', pos='GK,DL,DCL,DCR,DR,ML,DMC,MR,ACL,ACR,FCA') 4-3-2-1
+                                            option(value='40411', pos='GK,DL,DCL,DCR,DR,MLAA,MCL,MCR,MRAA,AC,FCA') 4-4-1-1
+                                            option(value='40501', pos='GK,DL,DCL,DCR,DR,DMC,MLAA,MCLL,MCRR,MRAA,FC') 4-5-1
+                                            option(value='41212', pos='GK,DLL,DCL,DCR,DRR,MCLL,DMC,MCRR,AC,FCLA,FCRA') 4-3-1-2
+                                            option(value='40204', pos='GK,DL,DCL,DCR,DR,MCL,MCR,WL,FCL,FCR,WR') 4-2-4
+                                            option(value='50302', pos='GK,DLL,DCLL,DC,DCRR,DRR,MCLL,DMC,MCRR,FCL,FCR') 5-3-2
+                                            option(value='50401', pos='GK,DLL,DCLL,DC,DCRR,DRR,MLAA,MCL,MCR,MRAA,FC') 5-4-1
+                                            option(value='30313', pos='GK,DCLL,DC,DCRR,MCLL,DMC,MCRR,AC,WLA,FCA,WRA') 3-3-1-3
+                                            option(value='30331', pos='GK,DCLL,DC,DCRR,MCLL,DMC,MCRR,AL,AC,AR,FCA') 3-3-3-1
+                                            option(value='30403', pos='GK,DCLL,DC,DCRR,MLA,MCL,MCR,MRA,FCLL,FCRR,FCA') 3-4-3
+                                            option(value='30502', pos='GK,DCLL,DC,DCRR,DMC,MLAA,MCLL,MCRR,MRAA,FCL,FCR') 3-5-2
+                                        optgroup(label='Classic')
+                                            option(value='20305', pos='GK,DCL,DCR,MCLL,DMC,MCRR,WL,AC,WR,FCLA,FCRA') 2-3-1-4
+                                            option(value='30304', pos='GK,DCLL,DC,DCRR,MCLL,DMC,MCRR,WL,FCL,FCR,WR') 3-3-4
+                                        optgroup(label='Others')
+                                            option.custom(value='1', pos='GK,DLL,DCL,DCR,DRR,DML,DMR,AL,AC,AR,FCA', selected='selected') Custom
+                                // /fieldControls
+                                img#bgfield(src="images/bg-soccer350x452.png", style="float: left; width: 100%;")
+                                ul#fld1.field.editable(data-id='986k')
+                                    li#fld1tkn1.token.posGK(style='')
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos GK
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn2.token.ui-draggable.posDL(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos DL
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn3.token.ui-draggable.posDCL(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos DC
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn4.token.ui-draggable.posDCR(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos DC
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn5.token.ui-draggable.posDR(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos DR
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn6.token.ui-draggable.posDML(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos DM
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn7.token.ui-draggable.posDMR(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos DM
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn8.token.ui-draggable.posAL(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos AL
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn9.token.ui-draggable.posAR(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos AR
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn10.token.ui-draggable.posFCLA(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos FC
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                    li#fld1tkn11.token.ui-draggable.posFCRA(style='')
+                                        .arrow.arrow1
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow2
+                                            .arrowhead.ui-draggable
+                                        .arrow.arrow3
+                                            .arrowhead.ui-draggable
+                                        dfn
+                                            span.ifSelected
+                                                span.tknPos FC
+                                        var.tknName(data-name='')
+                                            span.text.ui-sortable
+                                // /field
+                                .fieldSign
+                                    .fieldSignCorner
+                                    strong LineupBuilder.com
+                                .panelShare
+                                    a.modalClose.jsPanelShareClose(href='http://lineupbuilder.com/2014/custom/?sk=986k#')
+                                        span.glyphicon.glyphicon-remove
+                                    .export
+                                        .preview
+                                            .previewImg
                                                 canvas#previewImage220(width='220', height='220', data-name='38817431764327138327211317284240138240211158781582698013880211dc0000ffffff')
-                                             h4
-                                             p#previewNames 4-2-2-2: , , , ; , ; , ; ,
-                                             input#export_desc(type='hidden', name='export_desc', value='4-2-2-2: , , , ; , ; , ; , ')
-                                          // /preview
-                                          p
-                                             label(for='share-url')
+                                            h4
+                                            p#previewNames 4-2-2-2: , , , ; , ; , ; ,
+                                            input#export_desc(type='hidden', name='export_desc', value='4-2-2-2: , , , ; , ; , ; , ')
+                                        // /preview
+                                        p
+                                            label(for='share-url')
                                                 | Copy this link to
                                                 strong share
                                                 |  your team:
-                                             br
-                                             input#share-url.text.exportUrl(type='text', name='export_url', value='')
-                                          p
-                                             label(for='share-embed') Paste HTML to embed in website:
-                                             br
-                                             input#share-embed.text.exportEmbed(type='text', name='export_embed', value='')
-                                             br
-                                             span.disclosure
+                                            br
+                                            input#share-url.text.exportUrl(type='text', name='export_url', value='')
+                                        p
+                                            label(for='share-embed') Paste HTML to embed in website:
+                                            br
+                                            input#share-embed.text.exportEmbed(type='text', name='export_embed', value='')
+                                            br
+                                            span.disclosure
                                                 strong Beta:
                                                 |  Currently working in all browsers except Internet Explorer.
-                                          p.share-social
-                                             a.btn.btnShareFb(href='https://www.facebook.com/sharer/sharer.php?u=http://lineupbuilder.com/2014/custom/?sk=986k', target='_blank') Share on Facebook
-                                             a.btn.btnShareTw(href='https://twitter.com/intent/tweet?original_referer=http://lineupbuilder.com/&text=http://lineupbuilder.com/2014/custom/?sk=986k', target='_blank') Share on Twitter
-                                       // /export
-                                    // /panelShare
-                                 // /teamBody
-                                 .teamFoot
-                                    a.btn.btnLineup.jsDrawerToggle(href='http://lineupbuilder.com/')
-                                       span.glyphicon.glyphicon-globe
-                                       |  Build lineup for another team
-                                    a.btn.btnShare(href='http://lineupbuilder.com/2014/custom/?sk=986k#')
-                                       span.glyphicon.glyphicon-share
-                                       |  Share
-                                 // /teamFoot
-                              // /cardField
-                           // /cards
-                     // /team
-                  // /colContent
-               // /layoutCenter
-            // /mbody
-        #mainfoot
-            p(style='text-align:center;')
-               // <a href="#">Lineup Builder in your site</a> &bull; <a href="#">Advertise</a> &bull;
-               a(href='http://lineupbuilder.com/new.php?sk=986k') Back to the old version of Lineup Builder
-               |  •
-               a(href='http://lineupbuilder.com/contact.php') Contact us
-               |  •
-               a(href='http://lineupbuilder.com/about/terms-of-service.php') Terms of service
-               |  •
-               a(href='http://lineupbuilder.com/about/privacy-policy.php') Privacy policies
-         // /mainfoot
-      // /main
+                                        p.share-social
+                                            a.btn.btnShareFb(href='https://www.facebook.com/sharer/sharer.php?u=http://lineupbuilder.com/2014/custom/?sk=986k', target='_blank') Share on Facebook
+                                            a.btn.btnShareTw(href='https://twitter.com/intent/tweet?original_referer=http://lineupbuilder.com/&text=http://lineupbuilder.com/2014/custom/?sk=986k', target='_blank') Share on Twitter
 
-      #ascrail2000.nicescroll-rails(style='width: 7px; z-index: auto; position: absolute; cursor: default; opacity: 0; top: 78.5px; left: 501px; height: 493px;')
-         div(style='position: relative; float: right; width: 5px; border: 1px solid rgb(0, 0, 0); border-radius: 5px; height: 214px; top: 0px; background-color: rgb(34, 34, 34); background-clip: padding-box;')
-      #ascrail2000-hr.nicescroll-rails(style='height: 7px; z-index: auto; position: absolute; cursor: default; opacity: 0; display: none; top: 564.5px; left: 308px; width: 193px;')
-         div(style='position: relative; top: 0px; height: 5px; border: 1px solid rgb(0, 0, 0); border-radius: 5px; width: 200px; background-color: rgb(34, 34, 34); background-clip: padding-box;')
-      #collorpicker_287.colorpicker
-         .colorpicker_color(style='background-color: rgb(255, 0, 0);')
-            div
-               div(style='left: 150px; top: 20px;')
-         .colorpicker_hue
-            div(style='top: 150px;')
-         .colorpicker_new_color(style='background-color: rgb(220, 0, 0);')
-         .colorpicker_current_color(style='background-color: rgb(220, 0, 0);')
-         .colorpicker_hex
-            input(type='text', maxlength='6', size='6')
-         .colorpicker_rgb_r.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_rgb_g.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_rgb_b.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_hsb_h.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_hsb_s.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_hsb_b.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_submit
-      #collorpicker_84.colorpicker
-         .colorpicker_color(style='background-color: rgb(255, 0, 255);')
-            div
-               div(style='left: 0px; top: 0px;')
-         .colorpicker_hue
-            div(style='top: 25px;')
-         .colorpicker_new_color(style='background-color: rgb(255, 255, 255);')
-         .colorpicker_current_color(style='background-color: rgb(255, 255, 255);')
-         .colorpicker_hex
-            input(type='text', maxlength='6', size='6')
-         .colorpicker_rgb_r.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_rgb_g.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_rgb_b.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_hsb_h.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_hsb_s.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_hsb_b.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_submit
-      #collorpicker_121.colorpicker
-         .colorpicker_color(style='background-color: rgb(255, 0, 255);')
-            div
-               div(style='left: 0px; top: 0px;')
-         .colorpicker_hue
-            div(style='top: 25px;')
-         .colorpicker_new_color(style='background-color: rgb(255, 255, 255);')
-         .colorpicker_current_color(style='background-color: rgb(255, 255, 255);')
-         .colorpicker_hex
-            input(type='text', maxlength='6', size='6')
-         .colorpicker_rgb_r.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_rgb_g.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_rgb_b.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_hsb_h.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_hsb_s.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_hsb_b.colorpicker_field
-            input(type='text', maxlength='3', size='3')
-            span
-         .colorpicker_submit
+                            //.teamFoot
+                                a.btn.btnLineup.jsDrawerToggle(href='http://lineupbuilder.com/')
+                                    span.glyphicon.glyphicon-globe
+                                    |  Build lineup for another team
+                                a.btn.btnShare(href='http://lineupbuilder.com/2014/custom/?sk=986k#')
+                                    span.glyphicon.glyphicon-share
+                                    |  Share

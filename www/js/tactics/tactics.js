@@ -2,10 +2,11 @@
 var trans_EnterToEdit = 'กด Enter เพื่อตั้งชื่อ';
 var trans_untited = 'lineup ไม่ได้ตั้ง...';
 
-var default_width = 313;
-var default_height = 408;
 var new_width = "";
 var new_height = "";
+
+//Object
+var teamBody = '.teamBody'; //div
 
 //ขนาดภาพต้นฉบับ
 arrayOriginalWH = [
@@ -17,15 +18,17 @@ arrayOriginalWH = [
 arrayData = [];
 
 //function คำนวณ scale
-function calc_scale(original_x, original_width, new_width) {
+function calc_coord(original_x, original_width, new_width) {
     return Math.floor(new_width * (original_x / original_width));
 };
+function calc_scale(original_width, original_height, new_width) {
+    return (original_height / original_width) * new_width; //got new_height
+}
 
 
 //เมื่อปรับขนาด
 window.onresize = function() {
     applyCoordinates();
-    //if (window.innerWidth <= 800) {  console.log(new_width+"|"+new_height); }
 };
 
 function applyCoordinates() {
@@ -45,6 +48,8 @@ app.controller('player', function($scope) {
 /* --- APPLICATION --- */
 $(document).ready(function () {
     //Globals
+    //var applyInterval = setInterval(function() { applyCoordinates(); clearInterval(applyInterval); }, 1000);
+
     window.pDefault = '11';
     window.aDefault = '40402';
     window.tDefault = '';
@@ -280,8 +285,6 @@ function setMatchPlayers(match, players) {
 
 function initTeam(team) {
     var vars = $('#fld1vars').val();
-    //vars = "p=11&a=1&t=OK%25u0E44%25u0E21%25u0E48%25u0E21%25u0E35%25u0E2D%25u0E30%25u0E44%25u0E23&c=b84444&1=GK___388_174&2=DL___284_68_170-347_193-89&3=DC___311_121&4=DR___367_251&5=DR___307_308&6=MLA___204_64&7=MCL___222_138&8=MCR_%2528c%2529%2520SHIT%2520%255B0%255D__222_211&9=MRA___204_284&10=FCL_my%2520test__98_138&11=FCR___98_211_88-130&c2=000000&c3=ffffff";
-    console.log(vars);
     vars = vars !== '' ? '?' + vars : '';
     var playerNum = urv("p", pDefault, vars);
     var name = urv("t", tDefault, vars);
@@ -862,9 +865,13 @@ function setTokenOffset(token, offsetX, offsetY) {
     if (typeof(offsetX) == 'undefined' && typeof(offsetY) == 'undefined') {
         return false
     }
-    //console.log(token);
-    var newY = calc_scale(offsetY, arrayOriginalWH[0].width, $('.teamBody').css('width').replace('px',''));
-    var newX = calc_scale(offsetX, arrayOriginalWH[0].height, $('#bgfield').css('height').replace('px',''));
+    //1. calculate BGImage Scale
+    var imgHeight = calc_scale(arrayOriginalWH[0].width, arrayOriginalWH[0].height, $(teamBody).css('width').replace('px',''));
+    $(teamBody).css('height', imgHeight + 'px');
+
+    //2. calculate Player position coord
+    var newY = calc_coord(offsetY, arrayOriginalWH[0].width, $(teamBody).css('width').replace('px',''));
+    var newX = calc_coord(offsetX, arrayOriginalWH[0].height, $(teamBody).css('height').replace('px',''));
     $(token).css({
         'top': newX + 'px',
         'left': newY + 'px'
@@ -873,7 +880,7 @@ function setTokenOffset(token, offsetX, offsetY) {
     //------ keep new XY ------//
     //arrayData[token.replace('#fld1tkn','')].offX = offsetX;
     //arrayData[token.replace('#fld1tkn','')].offY = offsetY;
-//    console.log('ppp'+JSON.stringify(token[selector]));
+    //console.log('ppp'+JSON.stringify(token[selector]));
 }
 
 

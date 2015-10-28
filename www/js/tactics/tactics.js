@@ -18,8 +18,8 @@ arrayOriginalWH = [
 arrayData = [];
 
 //function คำนวณ scale
-function calc_coord(original_x, original_width, new_width) {
-    return Math.floor(new_width * (original_x / original_width));
+function calc_coord(original_xy, original_WH, new_WH) {
+    return Math.floor(new_WH * (original_xy / original_WH));
 };
 function calc_scale(original_width, original_height, new_width) {
     return (original_height / original_width) * new_width; //got new_height
@@ -34,6 +34,7 @@ window.onresize = function() {
 function applyCoordinates() {
     for (i=0;i<11;i++) {
         setTokenOffset('#fld1tkn'+(i+1), arrayData[i].offX, arrayData[i].offY);
+        setTokenArrows('#fld1tkn'+(i+1), arrayData[i].arrow1, arrayData[i].arrow2, arrayData[i].arrow3)
     }
 }
 
@@ -455,6 +456,7 @@ function setTeamAlign(team, align) {
 //LOOP SET
 function setTeamPlayers(playerNum, players) {
     //LOOP START HERE
+    arrayData = []; //clear  ArrayFirst
     $(players).each(function (index) {
         if (index < playerNum) {
             var chunks = this.split("_");
@@ -469,6 +471,10 @@ function setTeamPlayers(playerNum, players) {
             var arrow2 = chunks[6];
             var arrow3 = chunks[7];
             initToken(id, pos, num, name, offsetX, offsetY, arrow1, arrow2, arrow3);
+
+            //คัดลอกทุกอย่างลง VAR ปล. function each loop
+            //arrayData.width = 350;
+            arrayData.push({offX: offsetX, offY: offsetY, origin_offX: offsetX, origin_offY: offsetY, arrow1: arrow1, arrow2: arrow2, arrow3: arrow3});
 
         } else {
             var id = index + 1;
@@ -511,7 +517,6 @@ function setTeamPlayers(playerNum, players) {
  + setTokenName(token, name)
  + setTokenOffset(token, offsetX, offsetY)
  */
-var newToken;
 function initToken(id, pos, num, name, offsetX, offsetY, arrow1, arrow2, arrow3) {
     var newToken = $('fld1tkn' + id);
     initTokenSelect();
@@ -519,9 +524,12 @@ function initToken(id, pos, num, name, offsetX, offsetY, arrow1, arrow2, arrow3)
 
     initTokenMove();
 
-    //คัดลอกทุกอย่างลง VAR
-    arrayData.width = 350;
-    arrayData.push({offX: offsetX, offY: offsetY, origin_offX: offsetX, origin_offY: offsetY});
+    //arrayData.offX = offsetX;
+    //arrayData.offY = offsetX;
+    //arrayData.origin_offX = offsetX;
+    //arrayData.origin_offY = offsetY;
+
+
     //โยน
     setToken(id, pos, num, name, offsetX, offsetY, arrow1, arrow2, arrow3);
     exportUrlUpdate();
@@ -726,9 +734,6 @@ function setTokenPos(token, pos) {
         }
         if ($(token).find('.num').length <= 0) {
             $(token).find('.tknPos').text(tokenPos);
-            //เซ็ทเล่น
-            //$(token).find('.tknPos').css('background-image', 'url(../images/bg-soccer350x500.png)');
-            //$(token).find('.tknPos').css("background", ": url("../images/bg-soccer350x500.png'') no-repeat top center;')";
         }
         //$(token).attr('style','');
     }
@@ -895,6 +900,7 @@ function setTokenArrows(token, arrow1, arrow2, arrow3) {
         arrow3 = ''
     }
     //ตั้งค่า ศร
+    //arrowHeight ความยาวศร / กว้าง origin / ความกว้างปัจจุบัน
     var arrows = new Array(arrow1, arrow2, arrow3);
     $(arrows).each(function (index) {
         if (this != '') {
@@ -905,7 +911,7 @@ function setTokenArrows(token, arrow1, arrow2, arrow3) {
             var arrowRot = arrowValues[1];
             $(arrow).addClass('modified');
             $(arrow).css({
-                'height': arrowHeight,
+                'height': arrowHeight / (arrayOriginalWH[0].width / $(teamBody).css('width').replace('px','')) ,
                 '-webkit-transform': 'rotate(' + arrowRot + 'deg)',
                 '-ms-transform': 'rotate(' + arrowRot + 'deg)',
                 '-moz-transform': 'rotate(' + arrowRot + 'deg)',

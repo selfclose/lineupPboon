@@ -7,6 +7,8 @@ var new_height = "";
 
 //Object
 var teamBody = '.teamBody'; //div
+var teamSize = '#size_w';
+var teamFieldDiv = '';
 
 //ขนาดภาพต้นฉบับ
 arrayOriginalWH = [
@@ -227,6 +229,7 @@ function startup() {
     $('.team').each(function () {
         initTeam(this);
     });
+    applyCoordinates();
 }
 
 function initMatch(match) {
@@ -872,8 +875,9 @@ function setTokenOffset(token, offsetX, offsetY) {
     }
     //1. calculate BGImage Scale
     var imgHeight = calc_scale(arrayOriginalWH[0].width, arrayOriginalWH[0].height, $(teamBody).css('width').replace('px',''));
+    //$(teamBody).css('width'), arrayOriginalWH[0].width;
     $(teamBody).css('height', imgHeight + 'px');
-
+    $(teamBody).css('max-width', $(teamSize).val() + 'px'); //ตั้งความกว้างมากสุด
     //2. calculate Player position coord
     var newY = calc_coord(offsetY, arrayOriginalWH[0].width, $(teamBody).css('width').replace('px',''));
     var newX = calc_coord(offsetX, arrayOriginalWH[0].height, $(teamBody).css('height').replace('px',''));
@@ -903,9 +907,10 @@ function setTokenArrows(token, arrow1, arrow2, arrow3) {
     //arrowHeight ความยาวศร / กว้าง origin / ความกว้างปัจจุบัน
     var arrows = new Array(arrow1, arrow2, arrow3);
     $(arrows).each(function (index) {
+        var i = parseInt(index) + 1;
+        var arrow = $(token).find('.arrow' + i);
+
         if (this != '') {
-            var i = parseInt(index) + 1;
-            var arrow = $(token).find('.arrow' + i);
             var arrowValues = this.split('-');
             var arrowHeight = arrowValues[0];
             var arrowRot = arrowValues[1];
@@ -918,6 +923,8 @@ function setTokenArrows(token, arrow1, arrow2, arrow3) {
                 '-o-transform': 'rotate(' + arrowRot + 'deg)',
                 'transform': 'rotate(' + arrowRot + 'deg)'
             });
+        } else {
+            $(arrow).removeClass('modified'); //ลบศรออกก่อน กรณี apply
         }
     });
 }

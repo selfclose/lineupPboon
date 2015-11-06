@@ -4,13 +4,37 @@ BODY {
     background: url('bg-black-linen.png');
 }
 
+
 //teambody สำหรับ หน้าแสดง
 .teamBody {
     max-width: 500px;
     width: 100%;
     background: url($imagesPath + 'bg-soccer350x452.png') no-repeat top left;
     background-size: 100% 100%;
+
+    //หมุนสนามบอล จะถูก add เข้า Class ใน Function
+
 }
+
+
+.tintField {
+    -webkit-transform: rotateX(45deg); /* Chrome, Safari, Opera  */
+    transform: rotateX(45deg);
+    -webkit-transition: all 1.3s ease-in-out;
+    -moz-transition: all 1.3s ease-in-out;
+    -o-transition: all 1.3s ease-in-out;
+    transition: all 1.2s ease-in-out;
+}
+.tintToken {
+    -webkit-transform: rotateX(-45deg); /* Chrome, Safari, Opera  */
+    transform: rotateX(-45deg);
+    -webkit-transition: all 1.3s ease-in-out;
+    -moz-transition: all 1.3s ease-in-out;
+    -o-transition: all 1.3s ease-in-out;
+    transition: all 1.2s ease-in-out;
+}
+
+
 
 .fieldSign {
     height: 29px;
@@ -194,9 +218,7 @@ HTML.isTouch .fieldControls {
         height: 493px;
         overflow: hidden;
         white-space: nowrap;
-    }
-    .card {
-        white-space: normal;
+
     }
     .cards {
         .card {
@@ -215,32 +237,6 @@ HTML.isTouch .fieldControls {
     }
 }
 
-.cards .cardDrawer {
-    UL {
-        margin: 0;
-        padding: 0;
-        padding-left: 0;
-        list-style: none;
-    }
-    H4 {
-        margin: 0;
-        padding: 1px 6px;
-        padding: 1px 8px;
-        background: #333;
-    }
-    A {
-        padding: 5px 5px 5px 20px;
-        padding: 5px 8px;
-        padding: 4px 8px 7px;
-        text-decoration: none;
-        display: block;
-        border-bottom: 1px solid #1A1A1A;
-        &:hover {
-            background: #3875D7;
-            color: #FFF;
-        }
-    }
-}
 
 .wc {
     .teamHeadMenu H3 {
@@ -267,11 +263,6 @@ HTML.isTouch .fieldControls {
         box-shadow: 0px 0px 6px 3px #0A0A0A;
     }
 }
-
-BODY.lineup.wc {
-    background: #000;
-}
-
 .lineup.wc .team {
     border: 0;
     -moz-box-shadow: none;

@@ -7,6 +7,24 @@ BODY {
   background: url("../images/bg-soccer350x452.png") no-repeat top left;
   background-size: 100% 100%; }
 
+.tintField {
+  -webkit-transform: rotateX(45deg);
+  /* Chrome, Safari, Opera  */
+  transform: rotateX(45deg);
+  -webkit-transition: all 1.3s ease-in-out;
+  -moz-transition: all 1.3s ease-in-out;
+  -o-transition: all 1.3s ease-in-out;
+  transition: all 1.2s ease-in-out; }
+
+.tintToken {
+  -webkit-transform: rotateX(-45deg);
+  /* Chrome, Safari, Opera  */
+  transform: rotateX(-45deg);
+  -webkit-transition: all 1.3s ease-in-out;
+  -moz-transition: all 1.3s ease-in-out;
+  -o-transition: all 1.3s ease-in-out;
+  transition: all 1.2s ease-in-out; }
+
 .fieldSign {
   height: 29px;
   background: url("../images/field-sign-bg-456.png") repeat-x center top;
@@ -159,9 +177,6 @@ HTML.isTouch .fieldControls {
   overflow: hidden;
   white-space: nowrap; }
 
-.wc .card {
-  white-space: normal; }
-
 .wc .cards .card {
   width: 350px;
   height: 493px;
@@ -174,29 +189,6 @@ HTML.isTouch .fieldControls {
 
 .wc.onDrawer .cards .cardDrawer {
   margin-left: 0px; }
-
-.cards .cardDrawer UL {
-  margin: 0;
-  padding: 0;
-  padding-left: 0;
-  list-style: none; }
-
-.cards .cardDrawer H4 {
-  margin: 0;
-  padding: 1px 6px;
-  padding: 1px 8px;
-  background: #333; }
-
-.cards .cardDrawer A {
-  padding: 5px 5px 5px 20px;
-  padding: 5px 8px;
-  padding: 4px 8px 7px;
-  text-decoration: none;
-  display: block;
-  border-bottom: 1px solid #1A1A1A; }
-  .cards .cardDrawer A:hover {
-    background: #3875D7;
-    color: #FFF; }
 
 .wc .teamHeadMenu H3 {
   font-family: "Segoe UI","Myriad Pro","myriad-pro-1","myriad-pro-2", HelveticaNeue, Helvetica, Arial, serif;
@@ -219,9 +211,6 @@ HTML.isTouch .fieldControls {
   -moz-box-shadow: 0px 0px 6px 3px #0A0A0A;
   -webkit-box-shadow: 0px 0px 6px 3px #0A0A0A;
   box-shadow: 0px 0px 6px 3px #0A0A0A; }
-
-BODY.lineup.wc {
-  background: #000; }
 
 .lineup.wc .team {
   border: 0;

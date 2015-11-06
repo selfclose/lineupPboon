@@ -5,10 +5,10 @@ var trans_untited = 'lineup ไม่ได้ตั้ง...';
 var new_width = "";
 var new_height = "";
 
-//Object
+//---- Object ----//
 var teamBody = '.teamBody'; //div
 var teamSize = '#size_w';
-var teamFieldDiv = '';
+var codeTextbox = '#fld1vars';
 
 //ขนาดภาพต้นฉบับ
 arrayOriginalWH = [
@@ -22,7 +22,7 @@ arrayData = [];
 //function คำนวณ scale
 function calc_coord(original_xy, original_WH, new_WH) {
     return Math.floor(new_WH * (original_xy / original_WH));
-};
+}
 function calc_scale(original_width, original_height, new_width) {
     return (original_height / original_width) * new_width; //got new_height
 }
@@ -233,7 +233,7 @@ function startup() {
 }
 
 function initMatch(match) {
-    var vars = $('#fld1vars').val();
+    var vars = $(codeTextbox).val();
     vars = vars !== '' ? '?' + vars : '';
     var players = urv("p", pDefault, vars);
     setMatch(match, players);
@@ -288,7 +288,7 @@ function setMatchPlayers(match, players) {
  */
 
 function initTeam(team) {
-    var vars = $('#fld1vars').val();
+    var vars = $(codeTextbox).val();
     vars = vars !== '' ? '?' + vars : '';
     var playerNum = urv("p", pDefault, vars);
     var name = urv("t", tDefault, vars);
@@ -370,6 +370,13 @@ function setTeam(playerNum, team, name, color, color2, color3, align, players) {
     setTeamAlign(team, align);
     setTeamPlayers(playerNum, players); //team,
 
+    //Tint Animation
+    $('.teamBody').removeClass('tintField');
+    var spinInterval = setInterval(function() {
+        $('.teamBody').addClass('tintField');
+        $('span.tknPos').addClass('tintToken');
+        clearInterval(spinInterval);;
+    }, 1500);
 
 }
 
@@ -1273,7 +1280,7 @@ function updateLineupObject() {
 
 //SEO
 function updateOGMetas(id, image, title, description) {
-    if ($('#fld1vars').val() !== '') {
+    if ($(codeTextbox).val() !== '') {
         $('meta[property="og\\:title"]').attr('content', title);
         $('meta[property="og\\:description"]').attr('content', description);
         $('meta[property="og\\:url"]').attr('content', 'http://lineupbuilder.com/?sk=' + id);
